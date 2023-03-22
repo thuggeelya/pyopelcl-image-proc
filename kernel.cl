@@ -16,8 +16,8 @@ __kernel void quantify(__read_only image2d_t imgIn, __write_only image2d_t imgOu
   int q_levels = 10;
   float q_step = 255.0f / q_levels;
   int2 currentPosition = (int2)(get_global_id(0), get_global_id(1));
-  float4 currentPixel = 0.0f;
-  float4 calculatedPixel = 0.0f;
+  float4 currentPixel = 0;
+  float4 calculatedPixel = 0;
   currentPixel = read_imagef(imgIn, smp, currentPosition);
   float intensity = (currentPixel.s0 + currentPixel.s1 + currentPixel.s2) / 3.0f;
   int level = 0;
